@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102724">
+  <meta name="description" content="从心脏 MRI 自动分割心室与心肌，探索薄壁和边界的精细表征，并开发功能量化原型。">
+  <title>基于心脏 MRI 的心肌功能评估 · 张艺豪</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../../favicon.png">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header class="topbar">
+    <div class="shell header-inner">
+      <a href="../../index.html" class="brand" aria-label="张艺豪，返回首页">
+        <img src="../../favicon.png" width="32" height="32" alt="">
+        <span>张艺豪</span>
+      </a>
+      <nav aria-label="主导航"><a href="../../index.html">首页</a><a href="../../research/index.html" aria-current="page">科研项目</a><a href="../../projects/index.html">工程项目</a><a href="../../blog/index.html">技术博客</a><a href="../../resume/index.html">个人简历</a><a href="../../about/index.html">关于我</a></nav>
+    </div>
+  </header>
+  <main id="main">
+    <article class="shell article-shell">
+      <div class="article-heading">
+        <a class="back" href="../../research/index.html">← 返回科研项目</a>
+        <p class="metadata">硕士研究课题 · 2025.12 至今</p>
+        <h1>基于心脏 MRI 的心肌功能评估</h1>
+        <p class="dek">从心脏 MRI 自动分割心室与心肌，探索薄壁和边界的精细表征，并开发功能量化原型。</p>
+      </div>
+      
+      <div class="prose"><h2>分割结果示例</h2><figure class="article-image result-figure">
+      <a href="../../assets/cardiac-mri-comparison.png" aria-label="打开高分辨率心脏 MRI 分割对比图">
+        <img src="../../assets/cardiac-mri-comparison.png" width="1405" height="645"
+          alt="同一心脏 MRI 切片的原始影像、人工标注和模型预测。红色是左心室，黄色是心肌，蓝色是右心室。">
+      </a>
+      <figcaption>同一验证切片，左为原始影像，中为人工标注，右为模型预测。点击可查看原图。图像经裁切并叠加标注和预测轮廓。数据来源 <a href="https://doi.org/10.1109/TMI.2018.2837502">Bernard 等，ACDC</a> · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></figcaption>
+    </figure><h2>研究背景</h2><p>心脏 MRI 可以用来观察心室和心肌的结构。要从图像进一步估算心室容积与射血分数，需要先准确地识别这些结构。心肌薄壁或心室边界分得不够细，都可能影响后续量化。</p><h2>我做了什么</h2><ol><li>用 Python 和 PyTorch 搭建分割实验框架，统一数据预处理、空间几何对齐、训练、推理和评价流程。</li><li>按患者划分数据，实现左心室、右心室与心肌的自动分割，在 ACDC 数据集上完成五类模型的首轮基准训练与验证。</li><li>围绕改良 U-Net 探索内容感知上采样和多尺度语义融合，进行结构筛选和模块对照分析。</li></ol><h2>评估与当前进展</h2><p>用 Dice 查看预测与标注的重叠程度，用 HD95 查看边界距离，并结合逐病例误差分析定位典型失误。流程支持预测可视化和实验报告导出，已开发心室容积和射血分数计算原型。</p><p><a href="../../blog/patient-split/index.html">相关笔记：医学影像为什么要按患者划分数据</a></p></div>
+    </article>
+  </main>
+  <footer id="contact" class="footer">
+    <div class="shell footer-inner">
+      <span>© 张艺豪</span>
+      <div><a href="https://github.com/Mster111-zhang">GitHub</a><a href="../../about/index.html#credits">图片来源</a></div>
+    </div>
+  </footer>
+</body>
+</html>
