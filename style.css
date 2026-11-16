@@ -48,20 +48,21 @@ img { display: block; max-width: 100%; }
 .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin-top: 29px; align-items: start; }
 .project { overflow: hidden; border: 1px solid var(--edge); border-radius: 16px; background: #fff; }
 .about-panel { margin-top: 24px; }
-.empty, .slot { padding: 24px 26px; }
-.empty { border: 1px solid var(--edge); border-radius: 14px; background: white; }
-.empty p { color: var(--muted); }
-.cover { min-height: 170px; }
+.panel, .slot { padding: 24px 26px; }
+.panel { border: 1px solid var(--edge); border-radius: 14px; background: white; }
+.panel p, .slot p { color: var(--muted); font-size: 15px; line-height: 1.8; }
+.panel h3 + p, .slot h3 + p { margin-top: 10px; }
+.panel p + p, .slot p + p { margin-top: 12px; }
+.panel strong { color: var(--ink); }
+.cover { min-height: 112px; display: flex; align-items: flex-end; padding: 18px 26px; color: #303c60; font-size: 13px; font-weight: 700; }
 .cover-blue { background: radial-gradient(ellipse at 50% 30%, #f2f0ff, #dbdef9); }
 .cover-green { background: radial-gradient(ellipse at 50% 25%, #eff6ed, #d4e9db); }
-.lines { display: grid; gap: 9px; margin-top: 16px; }
-.lines span { display: block; width: min(86%, 330px); height: 7px; border-radius: 6px; background: #eceff5; }
-.lines span:last-child { width: min(56%, 205px); }
 .history-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin-top: 26px; }
 .contact { padding-bottom: 76px; }
 .contact-card { background: #121a37; border-radius: 16px; color: var(--white); padding: 33px clamp(22px, 5vw, 49px); }
 .contact-card h2 { font-size: clamp(27px, 3.4vw, 42px); }
 .contact-card p { margin-top: 10px; color: #c3cbe5; line-height: 1.7; font-size: 15px; }
+.profile-link { color: var(--lime); text-underline-offset: 4px; }
 .footer { color: #b9c1d6; }
 .footer .wrap { min-height: 74px; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 13px; }
 .footer a { text-decoration: none; }
@@ -89,8 +90,8 @@ img { display: block; max-width: 100%; }
   .hero-art img { width: min(100%, 355px); }
   .section { padding-top: 48px; }
   .project-grid, .history-grid { grid-template-columns: 1fr; gap: 18px; margin-top: 20px; }
-  .cover { min-height: 135px; }
-  .empty, .slot { padding: 19px 17px; }
+  .cover { min-height: 78px; padding: 14px 17px; }
+  .panel, .slot { padding: 19px 17px; }
   .contact { padding-bottom: 48px; }
 }
 

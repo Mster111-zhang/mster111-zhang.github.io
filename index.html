@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="张艺豪的个人网站">
+  <meta name="description" content="张艺豪的个人网站。东北林业大学计算机技术研究生，关注 Agent 应用开发与心脏 MRI 分析。">
   <meta name="theme-color" content="#090d1c">
   <title>张艺豪 · 个人网站</title>
   <link rel="stylesheet" href="style.css">
@@ -23,8 +23,8 @@
     <section class="hero wrap" aria-labelledby="name">
       <div class="hero-copy">
         <h1 id="name">张艺豪<span>.</span></h1>
-        <p class="headline">个人网站</p>
-        <a class="button primary" href="#about">浏览栏目 <span aria-hidden="true">↓</span></a>
+        <p class="headline">Agent 应用开发与医学影像研究</p>
+        <a class="button primary" href="#projects">查看项目 <span aria-hidden="true">↓</span></a>
       </div>
       <div class="hero-art" aria-hidden="true">
         <img src="agent-glass.webp" width="1100" height="1100" alt="" fetchpriority="high">
@@ -33,26 +33,32 @@
     <div class="paper">
       <section id="about" class="section wrap" aria-labelledby="about-title">
         <h2 id="about-title">关于我</h2>
-        <div class="about-panel empty">
-          <p>个人简介待补充</p>
-          <div class="lines" aria-hidden="true"><span></span><span></span></div>
+        <div class="about-panel panel">
+          <p>你好，我是张艺豪，东北林业大学计算机技术研究生，预计 2028 年毕业。我正在研究如何从心脏 MRI 中分割心室和心肌，并用分割结果计算心室容积与射血分数。</p>
+          <p>我也在学习大模型 Agent 应用开发，做过 Agent 学习 Demo，接触过 Dify、LangChain、LangGraph 工作流和 RAG。此前做过 Java 后端开发，有 Spring Boot、RESTful API 和 MySQL 的项目经验。</p>
         </div>
       </section>
       <section id="projects" class="section wrap" aria-labelledby="projects-title">
         <h2 id="projects-title">项目</h2>
         <div class="project-grid">
           <article class="project">
-            <div class="cover cover-blue" aria-hidden="true"></div>
+            <div class="cover cover-blue">
+              <span>硕士研究课题 · 2025.12 至今</span>
+            </div>
             <div class="slot">
-              <h3>项目待补充</h3>
-              <div class="lines" aria-hidden="true"><span></span><span></span></div>
+              <h3>基于心脏 MRI 的心肌功能评估</h3>
+              <p>用 Python 和 PyTorch 搭建分割实验流程，自动分割左心室、右心室与心肌，并在 ACDC 数据集上完成五类模型的首轮基准训练与验证。</p>
+              <p>目前探索改良 U-Net 对心肌薄壁和心室边界的处理，用 Dice、HD95 和逐病例分析评估分割效果，并开发了心室容积与射血分数的计算原型。</p>
             </div>
           </article>
           <article class="project">
-            <div class="cover cover-green" aria-hidden="true"></div>
+            <div class="cover cover-green">
+              <span>本科毕业设计</span>
+            </div>
             <div class="slot">
-              <h3>项目待补充</h3>
-              <div class="lines" aria-hidden="true"><span></span><span></span></div>
+              <h3>公共卫生健康档案系统</h3>
+              <p>基于 Spring Boot、MySQL 和 Redis，为居民、医生和管理员设计档案管理功能，覆盖档案录入、查询和异常预警。</p>
+              <p>实现血糖异常短信提醒和过敏史查询接口，并用图表展示疫苗接种率和慢性病趋势。</p>
             </div>
           </article>
         </div>
@@ -60,20 +66,23 @@
       <section id="experience" class="section wrap" aria-labelledby="experience-title">
         <h2 id="experience-title">经历</h2>
         <div class="history-grid">
-          <article class="empty">
+          <article class="panel">
             <h3>教育经历</h3>
-            <div class="lines" aria-hidden="true"><span></span><span></span></div>
+            <p><strong>东北林业大学</strong> · 计算机技术硕士在读<br>预计 2028 年毕业，学习过深度学习、高级算法设计与分析等课程。</p>
+            <p><strong>黑龙江工程学院</strong> · 智能科学与技术本科<br>2021.09–2025.06</p>
           </article>
-          <article class="empty">
+          <article class="panel">
             <h3>实习经历</h3>
-            <div class="lines" aria-hidden="true"><span></span><span></span></div>
+            <p><strong>北京华育兴业科技有限公司哈尔滨分公司</strong><br>2023.09–2024.01，参与智慧停车系统开发，按 MVC 分层组织业务，并使用 MySQL 事务保障数据一致性。</p>
+            <p><strong>陕州区卫生院</strong><br>协助日常收费和统计，整理并维护居民健康档案。</p>
           </article>
         </div>
       </section>
       <section id="contact" class="section contact wrap" aria-labelledby="contact-title">
         <div class="contact-card">
           <h2 id="contact-title">联系</h2>
-          <p>联系方式待补充</p>
+          <p>欢迎交流 Agent 应用、医学影像研究和实习机会。</p>
+          <p><a class="profile-link" href="https://github.com/Mster111-zhang">GitHub 主页 <span aria-hidden="true">↗</span></a></p>
         </div>
       </section>
     </div>
