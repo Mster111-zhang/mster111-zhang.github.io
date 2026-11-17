@@ -28,19 +28,22 @@
 
   <main id="main">
     <section id="home" class="hero" aria-labelledby="name">
-      <div class="shell">
-        <p class="status">2028 届 · 寻找实习</p>
-        <h1 id="name">张艺豪</h1>
-        <p class="roman-name" lang="en">ZHANG YIHAO</p>
-        <p class="terminal"><span aria-hidden="true">$</span> Agent 应用开发<span class="cursor" aria-hidden="true"></span></p>
-        <div class="hero-summary">
-          <p>东北林业大学计算机技术硕士在读，预计 2028 年毕业。我独立搭建过接入 MySQL 的自然语言查数工作流，目前也在用 Python 和 PyTorch 研究心脏 MRI 分割与心肌功能评估。正在寻找 Agent 应用开发实习。</p>
+      <div class="shell hero-layout">
+        <div class="hero-copy">
+          <p class="status">2028 届 · 寻找 Agent 应用开发实习</p>
+          <h1 id="name">张艺豪</h1>
+          <p class="roman-name" lang="en">ZHANG YIHAO</p>
+          <p class="hero-line">Agent 应用开发 / 心脏 MRI 研究</p>
+          <p class="hero-summary">东北林业大学计算机技术硕士在读。独立搭建接入 MySQL 的自然语言查数应用，实现 SQL 查询和图表输出。目前开展心脏 MRI 多结构分割与心肌功能评估研究。</p>
+          <div class="hero-actions">
+            <a class="outline primary" href="#agent-demo">查看 Agent 项目 <span aria-hidden="true">↓</span></a>
+            <a class="outline" href="#contact">联系我</a>
+          </div>
         </div>
-        <div class="hero-actions">
-          <a class="outline" href="#contact"><span aria-hidden="true">✉</span> 联系我</a>
-          <a class="outline" href="https://github.com/Mster111-zhang"><span aria-hidden="true">↗</span> GitHub</a>
-        </div>
-        <a class="scroll-link" href="#about">向下浏览 <span aria-hidden="true"></span></a>
+        <a class="hero-preview" href="#agent-demo">
+          <img src="assets/dify-query-result.png" width="1660" height="984" alt="自然语言查询后生成的统计汇总和对比柱状图">
+          <span><strong>自然语言查数与图表生成</strong><span aria-hidden="true">↘</span></span>
+        </a>
       </div>
     </section>
 
@@ -64,22 +67,23 @@
             </div>
           </article>
           <article class="panel">
-            <h3>核心方向</h3>
+            <h3>技术方向</h3>
             <ul class="point-list">
-              <li><strong>Agent 应用开发</strong>。关注大模型如何调用工具、查询业务数据库和展示结果。</li>
-              <li><strong>医学影像</strong>。研究心脏 MRI 多结构分割，以及如何利用分割结果估算心室功能指标。</li>
+              <li><strong>Agent 应用</strong>　工作流编排、数据库工具调用与结果可视化。</li>
+              <li><strong>医学影像</strong>　对比分割模型和边界误差，探索从分割结果估算心室功能。</li>
             </ul>
           </article>
           <article class="panel">
-            <h3>技能</h3>
-            <div class="project-tags" aria-label="技术栈">
-              <span>Python</span><span>PyTorch</span><span>Dify</span><span>SQL</span><span>MySQL</span><span>Java</span><span>Spring Boot</span><span>Redis</span>
-            </div>
-            <p class="panel-copy">研究生课程包括深度学习、高级算法设计与分析、模式识别和现代优化方法。</p>
+            <h3>技术栈</h3>
+            <dl class="skill-groups">
+              <div><dt>Agent 应用</dt><dd>Dify Chatflow、SQL、MySQL、ECharts</dd></div>
+              <div><dt>科研实验</dt><dd>Python、PyTorch、医学影像分割</dd></div>
+              <div><dt>后端开发</dt><dd>Java、Spring Boot、Redis</dd></div>
+            </dl>
           </article>
           <article class="panel">
-            <h3>个人优势</h3>
-            <p class="panel-copy">能把一个应用从输入、工具调用做到结果展示。做实验时，我会保留患者级划分、模型评估结果和逐病例误差，便于复现和定位问题。</p>
+            <h3>研究生课程</h3>
+            <p class="panel-copy">深度学习、高级算法设计与分析、模式识别、现代优化方法。</p>
           </article>
         </div>
       </div>
@@ -87,57 +91,67 @@
 
     <section id="projects" class="section" aria-labelledby="projects-title">
       <div class="shell">
-        <h2 id="projects-title" class="section-title">项目经历</h2>
+        <h2 id="projects-title" class="section-title">代表项目</h2>
         <div class="project-stack">
-          <article class="panel project">
+          <article id="cardiac-mri" class="panel project">
             <header class="project-header"><p>硕士研究课题</p><p>进行中</p></header>
             <h3>基于心脏 MRI 的心肌功能评估</h3>
-            <p class="panel-copy">从心脏 MRI 中自动分割左心室、右心室和心肌，为心室容积与射血分数的估算提供结构信息。</p>
+            <p class="project-lead">从心脏 MRI 中分割左心室、右心室和心肌。我重点比较模型在心肌薄壁和心室边界上的表现，再用分割结果估算心室容积与射血分数。</p>
             <div class="project-tags"><span>Python</span><span>PyTorch</span><span>U-Net</span><span>ACDC</span><span>Dice / HD95</span></div>
-            <h4>核心职责</h4>
-            <ul class="point-list">
-              <li>搭建分割实验框架，统一影像预处理、空间对齐、患者级划分、训练和评价。</li>
-              <li>完成五类模型的首轮基准训练与验证，围绕心肌薄壁和心室边界开展结构对照分析。</li>
-            </ul>
-            <div class="project-outcome">已实现预测可视化、逐病例误差分析和报告导出，并开发心室容积与射血分数计算原型。</div>
             <figure class="project-figure">
-              <a href="assets/cardiac-mri-comparison.png">
+              <a href="assets/cardiac-mri-comparison.png" data-preview aria-label="放大心脏 MRI 分割对比图">
                 <img src="assets/cardiac-mri-comparison.png" width="1405" height="645" loading="lazy" alt="同一心脏 MRI 切片的原始影像、人工标注与模型预测对比">
               </a>
-              <figcaption>心脏 MRI 分割对比。示例数据来自 ACDC，出处与许可见课题详情。</figcaption>
+              <figcaption>同一验证切片的原图、人工标注和预测结果。<a href="https://doi.org/10.1109/TMI.2018.2837502">ACDC 数据来源</a> · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></figcaption>
             </figure>
-            <a class="project-link" href="research/cardiac-mri/index.html">查看课题详情 ↗</a>
+            <div class="project-outcome"><strong>当前进展</strong><span>完成五类模型的首轮基准训练与验证，已实现预测可视化、实验报告导出及心功能计算原型。</span></div>
+            <details class="project-details">
+              <summary>展开实验方法与评估</summary>
+              <ul class="point-list">
+                <li>统一影像预处理、空间几何对齐和患者级数据划分，用同一实验流程对比模型。</li>
+                <li>围绕改良 U-Net 探索内容感知上采样与多尺度语义融合，开展结构筛选和模块对照。</li>
+                <li>用 Dice 衡量区域重叠，用 HD95 衡量边界距离，再回看逐病例误差定位典型失败样本。</li>
+              </ul>
+            </details>
+          </article>
+          <article id="agent-demo" class="panel project">
+            <header class="project-header"><p>Agent 应用</p><p>独立完成</p></header>
+            <h3>自然语言查数与图表生成</h3>
+            <p class="project-lead">我独立搭建并接通了从自然语言提问到 SQL 查询、结果解释和图表展示的工作流。以成绩统计为例，用户输入「查询全年级平均成绩」，即可看到分年级汇总与对比柱状图。</p>
+            <div class="project-tags"><span>Text-to-SQL</span><span>Dify Chatflow</span><span>MySQL</span><span>ECharts</span></div>
+            <ol class="flow" aria-label="查询工作流">
+              <li>自然语言提问</li><li>生成并解析 SQL</li><li>执行 MySQL 查询</li><li>汇总与图表输出</li>
+            </ol>
+            <div class="gallery" aria-label="工作流和演示截图">
+              <figure class="project-figure">
+                <a href="assets/dify-query-result.png" data-preview aria-label="放大示例运行结果"><img src="assets/dify-query-result.png" width="1660" height="984" loading="lazy" alt="查询全年级平均成绩后输出的文字汇总和对比柱状图"></a>
+                <figcaption>一次完整运行的结果</figcaption>
+              </figure>
+              <figure class="project-figure">
+                <a href="assets/dify-query-workflow.png" data-preview aria-label="放大工作流节点图"><img src="assets/dify-query-workflow.png" width="1636" height="739" loading="lazy" alt="自然语言查数工作流的节点与分支"></a>
+                <figcaption>Dify 工作流与图表分支</figcaption>
+              </figure>
+            </div>
+            <details class="project-details">
+              <summary>展开实现细节</summary>
+              <ul class="point-list">
+                <li>模型生成 SQL，代码节点解析查询语句，迭代节点调用 MySQL 执行并整理返回的数据。</li>
+                <li>模型根据查询结果生成文字摘要，再构造 ECharts 参数，由条件分支决定输出折线图、柱状图或饼图。</li>
+              </ul>
+            </details>
           </article>
           <article class="panel project">
             <header class="project-header"><p>本科毕业设计</p></header>
             <h3>公共卫生健康档案系统</h3>
-            <p class="panel-copy">面向居民、医生和管理员，提供档案录入、查询、异常预警和统计分析。</p>
-            <div class="project-tags"><span>Java</span><span>Spring Boot</span><span>MySQL</span><span>Redis</span><span>Bootstrap</span></div>
-            <h4>核心职责</h4>
-            <ul class="point-list">
-              <li>按不同角色设计档案管理功能，根据血糖异常等规则触发短信提醒。</li>
-              <li>实现过敏史查询接口，用图表展示疫苗接种率和慢性病趋势。</li>
-            </ul>
-            <a class="project-link" href="projects/health-records/index.html">查看毕设详情 ↗</a>
-          </article>
-          <article class="panel project">
-            <header class="project-header"><p>Agent 项目 · 独立完成</p></header>
-            <h3>自然语言查数与图表生成</h3>
-            <p class="panel-copy">用户用自然语言提问，工作流生成 SQL 并查询 MySQL，再返回文字汇总和 ECharts 图表。</p>
-            <div class="project-tags"><span>Text-to-SQL</span><span>Dify Chatflow</span><span>MySQL</span><span>ECharts</span></div>
-            <h4>核心职责</h4>
-            <p class="panel-copy">独立搭建查询流程并接入数据库，串联 SQL 解析、迭代查询、结果汇总和图表分支，支持折线图、柱状图和饼图。</p>
-            <div class="gallery" aria-label="工作流和演示截图">
-              <figure class="project-figure">
-                <a href="assets/dify-query-workflow.png"><img src="assets/dify-query-workflow.png" width="1636" height="739" loading="lazy" alt="自然语言查数工作流的节点与分支"></a>
-                <figcaption>工作流节点图</figcaption>
-              </figure>
-              <figure class="project-figure">
-                <a href="assets/dify-query-result.png"><img src="assets/dify-query-result.png" width="1660" height="984" loading="lazy" alt="查询全年级平均成绩后输出的文字汇总和对比柱状图"></a>
-                <figcaption>示例运行结果</figcaption>
-              </figure>
-            </div>
-            <a class="project-link" href="projects/agent/text-to-sql/index.html">查看工作流详情 ↗</a>
+            <p class="project-lead">围绕居民健康档案，把医生录入、居民查询、异常提醒与管理统计组织到同一系统，支持居民、医生和管理员三类角色。</p>
+            <div class="project-tags"><span>Java</span><span>Spring Boot</span><span>MySQL</span><span>Redis</span></div>
+            <details class="project-details">
+              <summary>展开功能实现</summary>
+              <ul class="point-list">
+                <li>设计档案录入、查询和异常预警模块，用规则识别血糖异常等情况并触发短信提醒。</li>
+                <li>实现过敏史查询 RESTful API，并用图表呈现疫苗接种率和慢性病趋势。</li>
+              </ul>
+            </details>
           </article>
         </div>
       </div>
@@ -150,14 +164,12 @@
           <article class="panel">
             <header class="project-header"><h3>北京华育兴业科技有限公司哈尔滨分公司</h3><p>2023.09–2024.01</p></header>
             <p class="muted">在校实习生 · 智慧停车系统</p>
-            <h4>主要职责与贡献</h4>
-            <p class="panel-copy">参与智慧停车管理系统开发，使用 Spring Boot 组织后端业务，按 MVC 划分模块，并使用 MySQL 事务维护多步写入的一致性。</p>
-            <a class="project-link" href="projects/smart-parking/index.html">查看实习项目 ↗</a>
+            <p class="panel-copy">参与智慧停车系统开发，按 MVC 分离页面、业务逻辑和数据访问。涉及多步写入的业务使用 MySQL 事务维护一致性。</p>
+            <div class="project-tags"><span>Spring Boot</span><span>MySQL</span><span>JSP</span><span>百度地图 SDK</span></div>
           </article>
           <article class="panel">
             <header class="project-header"><h3>陕州区柴洼卫生院</h3></header>
             <p class="muted">统计与档案管理实习</p>
-            <h4>主要职责与贡献</h4>
             <p class="panel-copy">协助日常收费、数据统计和居民健康档案维护。</p>
           </article>
         </div>
@@ -167,15 +179,23 @@
     <section id="contact" class="section" aria-labelledby="contact-title">
       <div class="shell">
         <h2 id="contact-title" class="section-title">联系我</h2>
-        <div class="contact-grid">
-          <a class="panel contact-panel" href="https://github.com/Mster111-zhang"><span>GitHub</span><span class="muted">Mster111-zhang ↗</span></a>
-          <a class="panel contact-panel" href="resume/index.html"><span>个人简历</span><span class="muted">查看教育与项目经历 ↗</span></a>
+        <div class="panel contact-panel">
+          <p>欢迎交流 Agent 应用开发、医学影像研究和实习机会。</p>
+          <a class="outline" href="https://github.com/Mster111-zhang">GitHub · Mster111-zhang <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>
 
-    <footer class="footer"><div class="shell">© 张艺豪</div></footer>
+    <footer class="footer"><div class="shell"><span>© 张艺豪</span><a href="#home">返回顶部 ↑</a></div></footer>
   </main>
+
+  <dialog class="image-preview" aria-labelledby="preview-title">
+    <div class="preview-bar">
+      <p id="preview-title">图片预览</p>
+      <form method="dialog"><button class="outline" autofocus>关闭</button></form>
+    </div>
+    <img alt="">
+  </dialog>
 
   <script>
     const links = [...document.querySelectorAll('.sidebar nav a')];
@@ -208,6 +228,24 @@
     addEventListener('resize', queueHighlight);
     addEventListener('load', queueHighlight);
     highlightActiveSection();
+
+    const preview = document.querySelector('.image-preview');
+    const previewImage = preview.querySelector('img');
+    const previewTitle = document.querySelector('#preview-title');
+    for (const link of document.querySelectorAll('a[data-preview]')) {
+      link.addEventListener('click', event => {
+        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        const thumbnail = link.querySelector('img');
+        previewImage.src = link.href;
+        previewImage.alt = thumbnail.alt;
+        previewTitle.textContent = link.getAttribute('aria-label').replace(/^放大/, '');
+        preview.showModal();
+      });
+    }
+    preview.addEventListener('click', event => {
+      if (event.target === preview) preview.close();
+    });
   </script>
 </body>
 </html>
