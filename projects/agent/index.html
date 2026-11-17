@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#102724">
-  <meta name="description" content="关注任务拆分、状态管理和 RAG 评估，学习用 Dify、LangChain 与 LangGraph 搭建应用。">
-  <title>大模型 Agent 应用学习实践 · 张艺豪</title>
+  <meta name="description" content="用自然语言查询 MySQL，自动生成并执行 SQL，再返回文字汇总与 ECharts 图表。">
+  <title>Dify 自然语言查数与图表生成 · 张艺豪</title>
   <link rel="icon" type="image/png" sizes="32x32" href="../../favicon.png">
   <link rel="stylesheet" href="../../style.css">
 </head>
@@ -24,12 +24,30 @@
     <article class="shell article-shell">
       <div class="article-heading">
         <a class="back" href="../../projects/index.html">← 返回工程项目</a>
-        <p class="metadata">工作流编排 · 知识问答</p>
-        <h1>大模型 Agent 应用学习实践</h1>
-        <p class="dek">关注任务拆分、状态管理和 RAG 评估，学习用 Dify、LangChain 与 LangGraph 搭建应用。</p>
+        <p class="metadata">独立完成 · Text-to-SQL</p>
+        <h1>Dify 自然语言查数与图表生成</h1>
+        <p class="dek">用自然语言查询 MySQL，自动生成并执行 SQL，再返回文字汇总与 ECharts 图表。</p>
       </div>
-      <figure class="article-image"><img src="https://images.unsplash.com/photo-1778146476147-5f8d4bd03c79?auto=format&amp;fit=crop&amp;w=1050&amp;q=81" alt="桌面上打开代码编辑器的笔记本电脑" loading="lazy" decoding="async"><figcaption>栏目配图 · <a href="https://unsplash.com/photos/oYzjGQ7LCVE">Bayu Syaits</a> · <a href="https://unsplash.com/license">Unsplash License</a></figcaption></figure>
-      <div class="prose"><h2>学习范围</h2><p>接触 Dify、LangChain 与 LangGraph 的基础用法，了解单 Agent、多 Agent 协作、状态管理与工作流编排。</p><h2>我在学什么</h2><ul><li>工作流。理解如何把任务拆分成节点，确定节点之间传递哪些状态，以及在哪一步调用工具。</li><li>RAG。学习如何从资料中检索相关内容、将证据交给模型，以及怎样评估答案是否得到引用材料支持。</li><li>部署与运行。了解 Agent 应用部署和监控，并学习过 vLLM 和多模态 Agent 的基础知识。</li></ul><h2>相关笔记</h2><p><a href="../../blog/agent-workflow/index.html">从工作流入门大模型 Agent</a></p></div>
+      
+      <div class="prose"><h2>运行效果</h2><figure class="article-image result-figure">
+      <a href="../../assets/dify-query-result.png">
+        <img src="../../assets/dify-query-result.png" width="1660" height="984"
+          alt="Dify 预览中输入查询全年级平均成绩，工作流返回文字统计和各年级平均成绩柱状图。">
+      </a>
+      <figcaption>输入「查询全年级平均成绩」后，工作流返回各年级的平均成绩、文字汇总和对比柱状图。点击可查看原图。</figcaption>
+    </figure><h2>工作流设计</h2><figure class="article-image result-figure">
+      <a href="../../assets/dify-query-workflow.png">
+        <img src="../../assets/dify-query-workflow.png" width="1636" height="739" loading="lazy"
+          alt="Dify Chatflow 节点图，依次生成 SQL、迭代执行查询、汇总结果，并按图表类型分支输出。">
+      </a>
+      <figcaption>Dify Chatflow 的完整节点图。点击可查看原图。</figcaption>
+    </figure>
+    <p>我独立搭建了整套 Chatflow，并接入 MySQL，串联从提问到结果展示的各个环节。</p>
+    <ol>
+      <li><strong>生成查询</strong>　让大模型将自然语言问题转为 SQL，通过代码节点解析待执行的语句。</li>
+      <li><strong>执行与汇总</strong>　在迭代节点调用 SQL 执行工具查询 MySQL，整理返回的数据，再交给模型生成文字摘要。</li>
+      <li><strong>图表展示</strong>　根据汇总结果生成 ECharts 参数，通过条件分支输出折线图、柱状图或饼图。</li>
+    </ol></div>
     </article>
   </main>
   <footer id="contact" class="footer">
