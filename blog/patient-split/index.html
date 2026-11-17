@@ -17,7 +17,7 @@
         <img src="../../favicon.png" width="32" height="32" alt="">
         <span>张艺豪</span>
       </a>
-      <nav aria-label="主导航"><a href="../../index.html">首页</a><a href="../../research/index.html">科研项目</a><a href="../../projects/index.html">工程项目</a><a href="../../blog/index.html" aria-current="page">技术博客</a><a href="../../resume/index.html">个人简历</a><a href="../../about/index.html">关于我</a></nav>
+      <nav aria-label="主导航"><a href="../../index.html">首页</a><a href="../../projects/agent/index.html">Agent 项目</a><a href="../../research/index.html">科研项目</a><a href="../../projects/index.html">工程项目</a><a href="../../blog/index.html" aria-current="page">技术博客</a><a href="../../resume/index.html">个人简历</a><a href="../../about/index.html">关于我</a></nav>
     </div>
   </header>
   <main id="main">
@@ -28,7 +28,6 @@
         <h1>医学影像分割为什么要按患者划分数据</h1>
         <p class="dek">把同一患者的影像留在同一个数据集合，评估更接近模型遇到新病例时的表现。</p>
       </div>
-      
       <div class="prose"><h2>问题出在哪</h2><p>一个患者的影像可以包含多张相邻切片。这些切片往往相似。如果逐张随机分配，训练集和验证集可能出现来自同一患者的切片，使验证结果偏乐观。</p><h2>怎么划分</h2><p>先按患者编号确定训练、验证和测试集合，再按归属放入该患者的全部样本。划分后可以检查三组患者编号是否有交集，并保存划分清单，便于用同一协议比较多个模型。</p><h2>怎么读结果</h2><p>整体 Dice 或 HD95 适合比较模型，逐病例结果则能提醒我们哪些样本值得回看。把原图、标注和预测放在一起，更容易判断偏差出现在心肌薄壁还是心室边界。</p></div>
     </article>
   </main>

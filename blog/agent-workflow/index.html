@@ -17,7 +17,7 @@
         <img src="../../favicon.png" width="32" height="32" alt="">
         <span>张艺豪</span>
       </a>
-      <nav aria-label="主导航"><a href="../../index.html">首页</a><a href="../../research/index.html">科研项目</a><a href="../../projects/index.html">工程项目</a><a href="../../blog/index.html" aria-current="page">技术博客</a><a href="../../resume/index.html">个人简历</a><a href="../../about/index.html">关于我</a></nav>
+      <nav aria-label="主导航"><a href="../../index.html">首页</a><a href="../../projects/agent/index.html">Agent 项目</a><a href="../../research/index.html">科研项目</a><a href="../../projects/index.html">工程项目</a><a href="../../blog/index.html" aria-current="page">技术博客</a><a href="../../resume/index.html">个人简历</a><a href="../../about/index.html">关于我</a></nav>
     </div>
   </header>
   <main id="main">
@@ -28,7 +28,6 @@
         <h1>从工作流入门大模型 Agent</h1>
         <p class="dek">用一个知识问答的例子理解输入、检索、生成、状态与评价。</p>
       </div>
-      
       <div class="prose"><h2>从一个简单工作流开始</h2><p>一个知识问答工作流可以先接收问题，接着检索资料，最后根据资料组织回答。把任务拆开，就能分别检查检索是否找对材料、模型是否引用了有用的证据。</p><h2>把节点的输入和输出写清楚</h2><p>问题、检索片段和引用来源可以成为节点之间传递的状态。当检索结果不足时，可以设计一个分支返回补充信息的提示，而不是让模型继续猜测。</p><h2>先检查能否稳定回答</h2><p>用几条已知有答案的问题检查检索与生成，再加一条资料里没有答案的问题，观察流程如何处理。这个例子可以作为学习 Dify 工作流或 LangGraph 编排时的检查思路。</p></div>
     </article>
   </main>

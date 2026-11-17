@@ -86,8 +86,7 @@ img { display: block; width: 100%; height: auto; }
 .case-gallery figure { overflow: hidden; border: 1px solid var(--edge); border-radius: 12px; }
 .case-gallery img { aspect-ratio: 16 / 9; object-fit: contain; background: #1e1e20; }
 .case-gallery figcaption { padding: 8px 12px; color: var(--muted); font-size: 13px; }
-.project-followup { display: grid; grid-template-columns: minmax(0, 1.6fr) repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 18px; }
-.project-followup h2 { margin-top: 5px; font-size: 20px; }
+.project-followup { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 18px; }
 .project-slot { display: grid; place-items: center; min-height: 110px; border: 1px dashed #adbba9; border-radius: 18px; color: var(--muted); background: #edf0e6; font-size: 14px; }
 .note-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 17px; }
 .note-list article { padding: 22px 25px; }
@@ -123,10 +122,11 @@ img { display: block; width: 100%; height: auto; }
 
 @media (max-width: 760px) {
   .shell { width: min(100% - 38px, 1160px); }
-  .header-inner { min-height: auto; gap: 6px; padding: 9px 0 8px; flex-wrap: wrap; }
-  .topbar nav { justify-content: flex-start; gap: 2px; }
-  .topbar nav a { padding: 6px 7px; font-size: 13px; }
-  [id] { scroll-margin-top: 115px; }
+  .header-inner { display: grid; min-height: auto; gap: 7px; padding: 9px 0 8px; }
+  .brand { justify-self: start; }
+  .topbar nav { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2px; }
+  .topbar nav a { padding: 6px 3px; text-align: center; white-space: nowrap; font-size: 13px; }
+  [id] { scroll-margin-top: 128px; }
   .home-hero { min-height: 395px; }
   .hero-content { padding-bottom: 66px; }
   .home-body { margin-top: -25px; padding-bottom: 49px; }
@@ -135,13 +135,9 @@ img { display: block; width: 100%; height: auto; }
   .card-content, .note-list article { padding: 17px; }
   .section-heading { margin-bottom: 14px; }
   .home-section { margin-top: 34px; }
-  .project-followup { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .project-followup .paper-panel { grid-column: 1 / -1; }
 }
 
 @media (max-width: 520px) {
-  .header-inner { display: block; }
-  .brand { margin-bottom: 5px; }
   .card-grid, .note-list, .case-gallery { grid-template-columns: minmax(0, 1fr); }
   .article-shell, .collection { padding-bottom: 46px; }
   .paper-panel { padding: 19px; }
