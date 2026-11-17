@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102724">
+  <meta name="description" content="用自然语言查询 MySQL，自动生成并执行 SQL，再返回文字汇总与 ECharts 图表。">
+  <title>自然语言查数与图表生成 · 张艺豪</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon.png">
+  <link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header class="topbar">
+    <div class="shell header-inner">
+      <a href="../../../index.html" class="brand" aria-label="张艺豪，返回首页">
+        <img src="../../../favicon.png" width="32" height="32" alt="">
+        <span>张艺豪</span>
+      </a>
+      <nav aria-label="主导航"><a href="../../../index.html">首页</a><a href="../../../research/index.html">科研项目</a><a href="../../../projects/index.html" aria-current="page">工程项目</a><a href="../../../blog/index.html">技术博客</a><a href="../../../resume/index.html">个人简历</a><a href="../../../about/index.html">关于我</a></nav>
+    </div>
+  </header>
+  <main id="main">
+    <article class="shell article-shell">
+      <div class="article-heading">
+        <a class="back" href="../../../projects/agent/index.html">← 返回Agent 项目</a>
+        <p class="metadata">独立完成 · Text-to-SQL</p>
+        <h1>自然语言查数与图表生成</h1>
+        <p class="dek">用自然语言查询 MySQL，自动生成并执行 SQL，再返回文字汇总与 ECharts 图表。</p>
+      </div>
+      <div class="prose"><h2>运行效果</h2><figure class="article-image result-figure">
+      <a href="../../../assets/dify-query-result.png">
+        <img src="../../../assets/dify-query-result.png" width="1660" height="984"
+          alt="Dify 预览中输入查询全年级平均成绩，工作流返回文字统计和各年级平均成绩柱状图。">
+      </a>
+      <figcaption>输入「查询全年级平均成绩」后，工作流返回各年级的平均成绩、文字汇总和对比柱状图。点击可查看原图。</figcaption>
+    </figure><h2>工作流设计</h2><figure class="article-image result-figure">
+      <a href="../../../assets/dify-query-workflow.png">
+        <img src="../../../assets/dify-query-workflow.png" width="1636" height="739" loading="lazy"
+          alt="Dify Chatflow 节点图，依次生成 SQL、迭代执行查询、汇总结果，并按图表类型分支输出。">
+      </a>
+      <figcaption>Dify Chatflow 的完整节点图。点击可查看原图。</figcaption>
+    </figure>
+    <p>我独立搭建了整套 Chatflow，并接入 MySQL，串联从提问到结果展示的各个环节。</p>
+    <ol>
+      <li><strong>生成查询</strong>　让大模型将自然语言问题转为 SQL，通过代码节点解析待执行的语句。</li>
+      <li><strong>执行与汇总</strong>　在迭代节点调用 SQL 执行工具查询 MySQL，整理返回的数据，再交给模型生成文字摘要。</li>
+      <li><strong>图表展示</strong>　根据汇总结果生成 ECharts 参数，通过条件分支输出折线图、柱状图或饼图。</li>
+    </ol></div>
+    </article>
+  </main>
+  <footer id="contact" class="footer">
+    <div class="shell footer-inner">
+      <span>© 张艺豪</span>
+      <div><a href="https://github.com/Mster111-zhang">GitHub</a><a href="../../../about/index.html#credits">图片来源</a></div>
+    </div>
+  </footer>
+</body>
+</html>
