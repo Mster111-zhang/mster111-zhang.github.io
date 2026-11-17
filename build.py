@@ -159,61 +159,6 @@ def note_links(prefix):
     </div>"""
 
 
-homepage = f"""<section class="home-hero" aria-labelledby="hero-title">
-  <div class="shell hero-content">
-    <p>东北林业大学 · 计算机技术硕士</p>
-    <h1 id="hero-title">张艺豪</h1>
-    <p class="hero-description">Agent 应用开发 · 心脏 MRI 研究</p>
-    <p class="hero-goal">预计 2028 年毕业，正在寻找 Agent 应用开发实习。</p>
-    <div class="hero-actions">
-      <a class="button solid" href="#projects">查看项目 <span aria-hidden="true">↓</span></a>
-      <a class="button outline" href="resume/index.html">个人简历 <span aria-hidden="true">↗</span></a>
-      <a class="button outline" href="{GITHUB}">GitHub <span aria-hidden="true">↗</span></a>
-    </div>
-  </div>
-</section>
-<div class="shell home-body">
-  <section id="about" class="intro-panel">
-    <div>
-      <h2>关于我</h2>
-      <dl class="education">
-        <div><dt>东北林业大学</dt><dd>计算机技术 · 硕士在读</dd></div>
-        <div><dt>黑龙江工程学院</dt><dd>智能科学与技术 · 本科</dd></div>
-      </dl>
-    </div>
-    <div>
-      <p>我正在研究心脏 MRI 分割与功能量化，也在做把大模型接到数据库与工具上的应用。</p>
-      <ul class="tags" aria-label="技术方向"><li>Agent 工作流</li><li>Python / PyTorch</li><li>MySQL</li><li>Java 后端</li></ul>
-    </div>
-  </section>
-  <section id="projects" class="home-section">
-    <div class="section-heading"><h2>项目方向</h2></div>
-    <div class="card-grid">
-      {card("", "research/", "科研项目", "医学影像 · 硕士课题", "心脏 MRI 分割、模型评估与心功能量化。", MRI[4], action="进入栏目")}
-      {card("", *AGENT, action="进入栏目")}
-      {card("", "projects/", "工程项目", "Java 后端 · 工程实践", "本科毕设、实习开发和业务系统。", action="进入栏目")}
-    </div>
-  </section>
-  <section id="experience" class="home-section">
-    <div class="section-heading"><h2>实习经历</h2><a class="text-link" href="resume/index.html">查看简历 ↗</a></div>
-    <div class="note-list">
-      <article><p class="metadata">2023.09–2024.01 · 开发实习</p>
-        <h3>华育兴业科技哈尔滨分公司</h3>
-        <p>参与智慧停车管理系统开发，用 Spring Boot 组织后端业务，通过 MySQL 事务保障数据一致性。</p>
-      </article>
-      <article><p class="metadata">统计与档案管理实习</p>
-        <h3>陕州区柴洼卫生院</h3>
-        <p>协助日常收费、统计和居民健康档案维护。</p>
-      </article>
-    </div>
-  </section>
-  <section id="articles" class="home-section">
-    <div class="section-heading"><h2>技术笔记</h2><a class="text-link" href="blog/index.html">全部笔记 ↗</a></div>
-    {note_links("")}
-  </section>
-</div>"""
-page("", "首页", "张艺豪的技术主页，记录 Agent 应用开发、心脏 MRI 研究与工程实践。", homepage)
-
 page("research/", "科研项目", "心脏 MRI 分割与心肌功能评估。",
      lead("科研项目", "心脏 MRI 分割、模型对比与心肌功能量化。")
      + f'<div class="shell collection"><div class="card-grid one">{card("../", *MRI)}</div></div>')
