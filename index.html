@@ -33,7 +33,10 @@
           <p class="status">2028 届 · 寻找 Agent 应用开发实习</p>
           <h1 id="name">张艺豪</h1>
           <p class="roman-name" lang="en">ZHANG YIHAO</p>
-          <p class="hero-line">Agent 应用开发 / 心脏 MRI 研究</p>
+          <p class="hero-line">
+            <span class="sr-only">Agent 应用开发与心脏 MRI 研究</span>
+            <span class="type-text" aria-hidden="true">Agent 应用开发</span><span class="type-caret" aria-hidden="true"></span>
+          </p>
           <p class="hero-summary">东北林业大学计算机技术硕士在读。独立搭建接入 MySQL 的自然语言查数应用，实现 SQL 查询和图表输出。目前开展心脏 MRI 多结构分割与心肌功能评估研究。</p>
           <div class="hero-actions">
             <a class="outline primary" href="#agent-demo">查看 Agent 项目 <span aria-hidden="true">↓</span></a>
@@ -154,6 +157,41 @@
             </details>
           </article>
         </div>
+        <div id="reproduction" class="reproduction">
+          <h3 class="plans-title">复现计划</h3>
+          <div class="plan-grid">
+            <article class="panel plan">
+              <p class="plan-status">待复现</p>
+              <h4>课程资料引用问答</h4>
+              <p class="panel-copy">以研究生课程讲义和论文 PDF 为资料，搭建支持连续追问的 RAG 应用，回答时展示检索片段与来源。</p>
+              <div class="project-tags"><span>LangChain</span><span>FAISS</span><span>Streamlit</span></div>
+              <details class="project-details">
+                <summary>查看复现目标</summary>
+                <ul class="point-list">
+                  <li>跑通文档解析、分块、向量检索与带来源的问答。</li>
+                  <li>用自选课程资料检查连续追问与文档外问题的表现，记录引用是否对应原文。</li>
+                  <li>原项目需模型 API 和本地 Embedding 模型，后续可尝试迁移到自己的 Dify 知识库。</li>
+                </ul>
+              </details>
+              <p class="plan-source">参考 Muhammad Awais 作品集的 Document Q&amp;A System。<a href="https://github.com/ik-awais/doc-qa-system">查看公开源码</a></p>
+            </article>
+            <article class="panel plan">
+              <p class="plan-status">待复现</p>
+              <h4>论文主题调研助手</h4>
+              <p class="panel-copy">围绕一个研究主题检索网页、提取正文、汇总资料并生成带来源的调研报告，用于整理心脏 MRI 分割相关方法。</p>
+              <div class="project-tags"><span>Python</span><span>Tavily</span><span>工具调用</span></div>
+              <details class="project-details">
+                <summary>查看复现目标</summary>
+                <ul class="point-list">
+                  <li>跑通搜索、网页提取、逐来源摘要和补充检索。</li>
+                  <li>保留来源链接，对照原文检查结论，并补充一次研究主题的运行记录。</li>
+                  <li>原项目需模型 API 和 Tavily 搜索 API，可先以 Markdown 报告完成一轮验证。</li>
+                </ul>
+              </details>
+              <p class="plan-source">参考 Muhammad Awais 作品集的 AI Research Assistant Agent。<a href="https://github.com/ik-awais/ai-research-agent">查看公开源码</a></p>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -246,6 +284,72 @@
     preview.addEventListener('click', event => {
       if (event.target === preview) preview.close();
     });
+
+    const hero = document.querySelector('.hero');
+    const typedText = document.querySelector('.type-text');
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+    const directions = ['Agent 应用开发', '心脏 MRI 研究'];
+    let heroVisible = true;
+    let directionIndex = 0;
+    let letterCount = directions[0].length;
+    let deleting = true;
+    let typingTimer;
+
+    function typeDirection() {
+      letterCount += deleting ? -1 : 1;
+      typedText.textContent = directions[directionIndex].slice(0, letterCount);
+      let delay = deleting ? 50 : 110;
+      if (!deleting && letterCount === directions[directionIndex].length) {
+        deleting = true;
+        delay = 2200;
+      } else if (deleting && letterCount === 0) {
+        deleting = false;
+        directionIndex = (directionIndex + 1) % directions.length;
+        delay = 300;
+      }
+      typingTimer = setTimeout(typeDirection, delay);
+    }
+
+    function syncMotion() {
+      clearTimeout(typingTimer);
+      const active = heroVisible && !document.hidden && !reducedMotion.matches;
+      hero.classList.toggle('is-animating', active);
+      if (reducedMotion.matches) {
+        typedText.textContent = directions.join(' / ');
+        document.querySelectorAll('.reveal-pending').forEach(element => element.classList.remove('reveal-pending'));
+      } else {
+        typedText.textContent = directions[directionIndex].slice(0, letterCount);
+        if (active) typingTimer = setTimeout(typeDirection, 1800);
+      }
+    }
+
+    if ('IntersectionObserver' in window) {
+      const heroObserver = new IntersectionObserver(entries => {
+        heroVisible = entries[0].isIntersecting;
+        syncMotion();
+      });
+      heroObserver.observe(hero);
+
+      const revealObserver = new IntersectionObserver(entries => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('reveal-pending');
+            revealObserver.unobserve(entry.target);
+          }
+        }
+      }, { rootMargin: '0px 0px -24px 0px' });
+      if (!reducedMotion.matches) {
+        for (const element of document.querySelectorAll('.section-title, .section .panel')) {
+          if (element.getBoundingClientRect().top > innerHeight) {
+            element.classList.add('reveal-item', 'reveal-pending');
+            revealObserver.observe(element);
+          }
+        }
+      }
+    }
+    document.addEventListener('visibilitychange', syncMotion);
+    reducedMotion.addEventListener('change', syncMotion);
+    syncMotion();
   </script>
 </body>
 </html>
