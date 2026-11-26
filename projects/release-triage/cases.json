@@ -1,0 +1,235 @@
+{
+  "cases": [
+    {
+      "id": "case-01",
+      "label": "演示 01 · 结算接口报警",
+      "alert": "发布后结算接口错误率从 1% 涨到 18%，帮我查一下原因。",
+      "records": [
+        {
+          "id": "R-11",
+          "source": "releases",
+          "at": "10:00",
+          "signal": "payment_timeout_ms",
+          "previous": 2000,
+          "current": 200,
+          "description": "checkout v1.7.3 将支付请求超时从 2000 毫秒改为 200 毫秒。"
+        },
+        {
+          "id": "L-11",
+          "source": "logs",
+          "at": "10:03",
+          "signal": "payment_timeout",
+          "previous": null,
+          "current": 200,
+          "description": "结算请求支付时达到 200 毫秒等待上限。"
+        },
+        {
+          "id": "M-11",
+          "source": "metrics",
+          "at": "10:06",
+          "signal": "payment_p95_ms",
+          "previous": 440,
+          "current": 450,
+          "description": "支付服务 P95 响应耗时从 440 毫秒变为 450 毫秒。"
+        },
+        {
+          "id": "M-12",
+          "source": "metrics",
+          "at": "10:06",
+          "signal": "checkout_error_pct",
+          "previous": 1,
+          "current": 18,
+          "description": "结算错误率从 1% 升至 18%。"
+        }
+      ]
+    },
+    {
+      "id": "case-02",
+      "label": "演示 02 · 支付请求积压",
+      "alert": "支付一直等待，刚好发过版，是这次变更引起的吗？",
+      "records": [
+        {
+          "id": "R-21",
+          "source": "releases",
+          "at": "10:00",
+          "signal": "payment_timeout_ms",
+          "previous": 1200,
+          "current": 1200,
+          "description": "此次发布更新了结算页文案，支付超时仍是 1200 毫秒。"
+        },
+        {
+          "id": "L-21",
+          "source": "logs",
+          "at": "10:05",
+          "signal": "payment_timeout",
+          "previous": null,
+          "current": 1200,
+          "description": "结算等待支付响应超过 1200 毫秒。"
+        },
+        {
+          "id": "M-21",
+          "source": "metrics",
+          "at": "10:06",
+          "signal": "payment_p95_ms",
+          "previous": 390,
+          "current": 1720,
+          "description": "支付服务 P95 响应耗时从 390 毫秒升到 1720 毫秒。"
+        },
+        {
+          "id": "M-22",
+          "source": "metrics",
+          "at": "10:06",
+          "signal": "checkout_error_pct",
+          "previous": 1,
+          "current": 12,
+          "description": "结算错误率从 1% 升到 12%。"
+        }
+      ]
+    },
+    {
+      "id": "case-03",
+      "label": "演示 03 · 下单返回 503",
+      "alert": "下单接口频繁返回 503，请定位故障。",
+      "records": [
+        {
+          "id": "R-31",
+          "source": "releases",
+          "at": "10:00",
+          "signal": "db_pool_max",
+          "previous": 40,
+          "current": 8,
+          "description": "checkout v1.8.1 将数据库连接池上限从 40 改成 8。"
+        },
+        {
+          "id": "L-31",
+          "source": "logs",
+          "at": "10:02",
+          "signal": "pool_checkout_timeout",
+          "previous": null,
+          "current": null,
+          "description": "下单请求等待数据库连接超时，返回 503。"
+        },
+        {
+          "id": "M-31",
+          "source": "metrics",
+          "at": "10:05",
+          "signal": "db_pool_in_use",
+          "previous": 19,
+          "current": 8,
+          "description": "发版后 8 个可用连接全部被占用。"
+        },
+        {
+          "id": "M-32",
+          "source": "metrics",
+          "at": "10:05",
+          "signal": "checkout_error_pct",
+          "previous": 1,
+          "current": 21,
+          "description": "下单错误率从 1% 升至 21%。"
+        }
+      ]
+    },
+    {
+      "id": "case-04",
+      "label": "演示 04 · 告警数据缺失",
+      "alert": "结算告警出现了，但监控还有部分数据没到。",
+      "records": [
+        {
+          "id": "R-41",
+          "source": "releases",
+          "at": "10:00",
+          "signal": "payment_timeout_ms",
+          "previous": 2000,
+          "current": 250,
+          "description": "发布将支付超时改为 250 毫秒。"
+        },
+        {
+          "id": "M-41",
+          "source": "metrics",
+          "at": "10:05",
+          "signal": "checkout_error_pct",
+          "previous": 1,
+          "current": 8,
+          "description": "结算错误率从 1% 升至 8%，支付耗时样本缺失。"
+        }
+      ]
+    },
+    {
+      "id": "case-05",
+      "label": "演示 05 · 超时阈值边界",
+      "alert": "结算有少量超时，看看是否与新阈值有关。",
+      "records": [
+        {
+          "id": "R-51",
+          "source": "releases",
+          "at": "10:00",
+          "signal": "payment_timeout_ms",
+          "previous": 1500,
+          "current": 500,
+          "description": "支付超时从 1500 毫秒改为 500 毫秒。"
+        },
+        {
+          "id": "L-51",
+          "source": "logs",
+          "at": "10:03",
+          "signal": "payment_timeout",
+          "previous": null,
+          "current": 500,
+          "description": "结算请求达到 500 毫秒等待上限。"
+        },
+        {
+          "id": "M-51",
+          "source": "metrics",
+          "at": "10:05",
+          "signal": "payment_p95_ms",
+          "previous": 500,
+          "current": 500,
+          "description": "支付服务 P95 响应耗时稳定在 500 毫秒。"
+        },
+        {
+          "id": "M-52",
+          "source": "metrics",
+          "at": "10:05",
+          "signal": "checkout_error_pct",
+          "previous": 2,
+          "current": 7,
+          "description": "结算错误率从 2% 升至 7%。"
+        }
+      ]
+    },
+    {
+      "id": "case-06",
+      "label": "演示 06 · 库存错误但下单正常",
+      "alert": "日志出现库存服务异常，请核对结算是否受影响。",
+      "records": [
+        {
+          "id": "R-61",
+          "source": "releases",
+          "at": "10:00",
+          "signal": "payment_timeout_ms",
+          "previous": 1500,
+          "current": 1500,
+          "description": "这次发布只更新了库存页样式。"
+        },
+        {
+          "id": "L-61",
+          "source": "logs",
+          "at": "10:03",
+          "signal": "inventory_error",
+          "previous": null,
+          "current": null,
+          "description": "库存后台同步任务报错。"
+        },
+        {
+          "id": "M-61",
+          "source": "metrics",
+          "at": "10:06",
+          "signal": "checkout_error_pct",
+          "previous": 1,
+          "current": 1,
+          "description": "结算错误率保持在 1%。"
+        }
+      ]
+    }
+  ]
+}

@@ -30,22 +30,29 @@
     <section id="home" class="hero" aria-labelledby="name">
       <div class="shell hero-layout">
         <div class="hero-copy">
-          <p class="status">2028 届 · 寻找 Agent 应用开发实习</p>
+          <p class="status">2028 届 · 寻找 Agent 开发实习</p>
           <h1 id="name">张艺豪</h1>
           <p class="roman-name" lang="en">ZHANG YIHAO</p>
           <p class="hero-line">
             <span class="sr-only">Agent 应用开发与心脏 MRI 研究</span>
             <span class="type-text" aria-hidden="true">Agent 应用开发</span><span class="type-caret" aria-hidden="true"></span>
           </p>
-          <p class="hero-summary">东北林业大学计算机技术硕士在读。独立搭建接入 MySQL 的自然语言查数应用，实现 SQL 查询和图表输出。目前开展心脏 MRI 多结构分割与心肌功能评估研究。</p>
+          <p class="hero-summary">东北林业大学计算机技术硕士在读，预计 2028 年毕业。关注 Agent 工作流、工具调用与证据追溯，开展心脏 MRI 分割与心肌功能评估研究。</p>
           <div class="hero-actions">
             <a class="outline primary" href="#agent-demo">查看 Agent 项目 <span aria-hidden="true">↓</span></a>
             <a class="outline" href="#contact">联系我</a>
           </div>
         </div>
-        <a class="hero-preview" href="#agent-demo">
-          <img src="assets/dify-query-result.png" width="1660" height="984" alt="自然语言查询后生成的统计汇总和对比柱状图">
-          <span><strong>自然语言查数与图表生成</strong><span aria-hidden="true">↘</span></span>
+        
+        <a class="hero-preview" href="projects/release-triage/">
+          <div class="agent-preview">
+            <p class="preview-label">发布异常归因 · 演示案例</p>
+            <h2>刚好发过版，<br>就是发版引起的吗？</h2>
+            <div class="preview-evidence"><span>发布配置</span><strong>支付超时仍为 1200 ms</strong></div>
+            <div class="preview-evidence"><span>服务指标</span><strong>支付 P95 从 390 → 1720 ms</strong></div>
+            <p class="preview-conclusion">证据指向下游支付服务变慢</p>
+          </div>
+          <span><strong>打开免费交互演示</strong><span aria-hidden="true">↗</span></span>
         </a>
       </div>
     </section>
@@ -72,21 +79,22 @@
           <article class="panel">
             <h3>技术方向</h3>
             <ul class="point-list">
-              <li><strong>Agent 应用</strong>　工作流编排、数据库工具调用与结果可视化。</li>
+              <li><strong>Agent 应用</strong>　状态管理、条件路由、工具参数校验与证据引用追溯。</li>
               <li><strong>医学影像</strong>　对比分割模型和边界误差，探索从分割结果估算心室功能。</li>
             </ul>
           </article>
           <article class="panel">
             <h3>技术栈</h3>
             <dl class="skill-groups">
-              <div><dt>Agent 应用</dt><dd>Dify Chatflow、SQL、MySQL、ECharts</dd></div>
+              <div><dt>Agent 开发</dt><dd>Python、LangGraph、FastAPI、SQLite</dd></div>
+              <div><dt>大模型基础</dt><dd>提示词设计、RAG 流程与评估；学习过 Dify、LangChain</dd></div>
               <div><dt>科研实验</dt><dd>Python、PyTorch、医学影像分割</dd></div>
-              <div><dt>后端开发</dt><dd>Java、Spring Boot、Redis</dd></div>
+              <div><dt>后端开发</dt><dd>Java、Spring Boot、MySQL、Redis</dd></div>
             </dl>
           </article>
           <article class="panel">
-            <h3>研究生课程</h3>
-            <p class="panel-copy">深度学习、高级算法设计与分析、模式识别、现代优化方法。</p>
+            <h3>证书与校园经历</h3>
+            <p class="panel-copy">软件设计师（软考中级）、CET-4。获校内奖学金，曾任院资助发展中心部长、本科校健美社团社长。</p>
           </article>
         </div>
       </div>
@@ -96,9 +104,31 @@
       <div class="shell">
         <h2 id="projects-title" class="section-title">代表项目</h2>
         <div class="project-stack">
+          <article id="agent-demo" class="panel project">
+            <header class="project-header"><p>Agent 应用开发</p><p>个人项目</p></header>
+            <h3>基于多源证据的发布异常归因 Agent</h3>
+            <p class="project-lead">发布后出现报错，怎样判断是版本回归还是下游服务变慢？项目将发布记录、错误日志和服务指标串成可回溯的排查过程，支持导入结构化证据，并在报告中引用查到的记录。</p>
+            <div class="project-tags"><span>Python</span><span>LangGraph</span><span>FastAPI</span><span>SQLite</span><span>Function Calling</span></div>
+            <ol class="flow" aria-label="排查工作流"><li>输入告警与证据</li><li>选择查询工具</li><li>校验时序与信号</li><li>生成带引用的报告</li></ol>
+            <div class="hero-actions">
+              <a class="outline primary" href="projects/release-triage/">免费体验 <span aria-hidden="true">↗</span></a>
+              <a class="outline" href="https://github.com/Mster111-zhang/release-triage-agent">查看源码 <span aria-hidden="true">↗</span></a>
+            </div>
+            <p class="muted">网页体验使用浏览器规则；完整源码包含 Python / LangGraph 工作流和可配置的百炼接口。</p>
+            <div class="project-outcome"><strong>本地验证</strong><span>6 个合成案例通过诊断与引用校验。5 项接口测试覆盖证据导入、输入校验、查询时段、冲突处理和异常回退。</span></div>
+            <details class="project-details">
+              <summary>展开实现与评测</summary>
+              <ul class="point-list">
+                <li>用 LangGraph 编排决策和查询节点；按来源和 UTC 时段执行参数化 SQLite 查询。</li>
+                <li>校验导入证据与 Function Calling 参数，证据不足或存在冲突时返回待补充结论；在线调用失败时标记回退。</li>
+                <li>对照“发现发布就归因发布”的基线，检查分类、引用与提前停止。评测成绩仅描述固定合成案例的表现。</li>
+              </ul>
+            </details>
+          </article>
+
           <article id="cardiac-mri" class="panel project">
             <header class="project-header"><p>硕士研究课题</p><p>进行中</p></header>
-            <h3>基于心脏 MRI 的心肌功能评估</h3>
+            <h3>基于心脏 MRI 的心肌功能评估方法研究与实现</h3>
             <p class="project-lead">从心脏 MRI 中分割左心室、右心室和心肌。我重点比较模型在心肌薄壁和心室边界上的表现，再用分割结果估算心室容积与射血分数。</p>
             <div class="project-tags"><span>Python</span><span>PyTorch</span><span>U-Net</span><span>ACDC</span><span>Dice / HD95</span></div>
             <figure class="project-figure">
@@ -113,84 +143,12 @@
               <ul class="point-list">
                 <li>统一影像预处理、空间几何对齐和患者级数据划分，用同一实验流程对比模型。</li>
                 <li>围绕改良 U-Net 探索内容感知上采样与多尺度语义融合，开展结构筛选和模块对照。</li>
-                <li>用 Dice 衡量区域重叠，用 HD95 衡量边界距离，再回看逐病例误差定位典型失败样本。</li>
+                <li>用 Dice、HD95 和逐病例误差评估分割，已开发心室容积与射血分数计算原型。</li>
+                <li>后续计划参考 PULSE 提取 23 维指标，开展患者级五分类，并生成带异常标记的结构化报告。</li>
+                <li>规划 M&amp;Ms-2、Sunnybrook 外部验证及 CAMUS 少样本适配。</li>
               </ul>
             </details>
           </article>
-          <article id="agent-demo" class="panel project">
-            <header class="project-header"><p>Agent 应用</p><p>独立完成</p></header>
-            <h3>自然语言查数与图表生成</h3>
-            <p class="project-lead">我独立搭建并接通了从自然语言提问到 SQL 查询、结果解释和图表展示的工作流。以成绩统计为例，用户输入「查询全年级平均成绩」，即可看到分年级汇总与对比柱状图。</p>
-            <div class="project-tags"><span>Text-to-SQL</span><span>Dify Chatflow</span><span>MySQL</span><span>ECharts</span></div>
-            <ol class="flow" aria-label="查询工作流">
-              <li>自然语言提问</li><li>生成并解析 SQL</li><li>执行 MySQL 查询</li><li>汇总与图表输出</li>
-            </ol>
-            <div class="gallery" aria-label="工作流和演示截图">
-              <figure class="project-figure">
-                <a href="assets/dify-query-result.png" data-preview aria-label="放大示例运行结果"><img src="assets/dify-query-result.png" width="1660" height="984" loading="lazy" alt="查询全年级平均成绩后输出的文字汇总和对比柱状图"></a>
-                <figcaption>一次完整运行的结果</figcaption>
-              </figure>
-              <figure class="project-figure">
-                <a href="assets/dify-query-workflow.png" data-preview aria-label="放大工作流节点图"><img src="assets/dify-query-workflow.png" width="1636" height="739" loading="lazy" alt="自然语言查数工作流的节点与分支"></a>
-                <figcaption>Dify 工作流与图表分支</figcaption>
-              </figure>
-            </div>
-            <details class="project-details">
-              <summary>展开实现细节</summary>
-              <ul class="point-list">
-                <li>模型生成 SQL，代码节点解析查询语句，迭代节点调用 MySQL 执行并整理返回的数据。</li>
-                <li>模型根据查询结果生成文字摘要，再构造 ECharts 参数，由条件分支决定输出折线图、柱状图或饼图。</li>
-              </ul>
-            </details>
-          </article>
-          <article class="panel project">
-            <header class="project-header"><p>本科毕业设计</p></header>
-            <h3>公共卫生健康档案系统</h3>
-            <p class="project-lead">围绕居民健康档案，把医生录入、居民查询、异常提醒与管理统计组织到同一系统，支持居民、医生和管理员三类角色。</p>
-            <div class="project-tags"><span>Java</span><span>Spring Boot</span><span>MySQL</span><span>Redis</span></div>
-            <details class="project-details">
-              <summary>展开功能实现</summary>
-              <ul class="point-list">
-                <li>设计档案录入、查询和异常预警模块，用规则识别血糖异常等情况并触发短信提醒。</li>
-                <li>实现过敏史查询 RESTful API，并用图表呈现疫苗接种率和慢性病趋势。</li>
-              </ul>
-            </details>
-          </article>
-        </div>
-        <div id="reproduction" class="reproduction">
-          <h3 class="plans-title">复现计划</h3>
-          <div class="plan-grid">
-            <article class="panel plan">
-              <p class="plan-status">待复现</p>
-              <h4>课程资料引用问答</h4>
-              <p class="panel-copy">以研究生课程讲义和论文 PDF 为资料，搭建支持连续追问的 RAG 应用，回答时展示检索片段与来源。</p>
-              <div class="project-tags"><span>LangChain</span><span>FAISS</span><span>Streamlit</span></div>
-              <details class="project-details">
-                <summary>查看复现目标</summary>
-                <ul class="point-list">
-                  <li>跑通文档解析、分块、向量检索与带来源的问答。</li>
-                  <li>用自选课程资料检查连续追问与文档外问题的表现，记录引用是否对应原文。</li>
-                  <li>原项目需模型 API 和本地 Embedding 模型，后续可尝试迁移到自己的 Dify 知识库。</li>
-                </ul>
-              </details>
-              <p class="plan-source">参考 Muhammad Awais 作品集的 Document Q&amp;A System。<a href="https://github.com/ik-awais/doc-qa-system">查看公开源码</a></p>
-            </article>
-            <article class="panel plan">
-              <p class="plan-status">待复现</p>
-              <h4>论文主题调研助手</h4>
-              <p class="panel-copy">围绕一个研究主题检索网页、提取正文、汇总资料并生成带来源的调研报告，用于整理心脏 MRI 分割相关方法。</p>
-              <div class="project-tags"><span>Python</span><span>Tavily</span><span>工具调用</span></div>
-              <details class="project-details">
-                <summary>查看复现目标</summary>
-                <ul class="point-list">
-                  <li>跑通搜索、网页提取、逐来源摘要和补充检索。</li>
-                  <li>保留来源链接，对照原文检查结论，并补充一次研究主题的运行记录。</li>
-                  <li>原项目需模型 API 和 Tavily 搜索 API，可先以 Markdown 报告完成一轮验证。</li>
-                </ul>
-              </details>
-              <p class="plan-source">参考 Muhammad Awais 作品集的 AI Research Assistant Agent。<a href="https://github.com/ik-awais/ai-research-agent">查看公开源码</a></p>
-            </article>
-          </div>
         </div>
       </div>
     </section>
@@ -200,15 +158,18 @@
         <h2 id="experience-title" class="section-title">实习经历</h2>
         <div class="timeline experience-list">
           <article class="panel">
+            <header class="project-header"><h3>北京智慧星光信息技术股份有限公司</h3><p>2024.02–2024.04</p></header>
+            <p class="muted">Python 数据采集实习生</p>
+            <p class="panel-copy">基于内部类 Scrapy 框架开发、调试和部署采集脚本，个人任务累计覆盖 270+ 个站点，日均新增数据 10 万+ 条。</p>
+            <ul class="point-list"><li>使用 Requests、XPath 和正则表达式完成请求构造、网页解析及清洗。</li><li>使用 Charles 排查请求头与动态参数，完成 70+ 个加密站点的请求参数分析与采集适配。</li></ul>
+            <div class="project-tags"><span>Python</span><span>Requests</span><span>XPath</span><span>Charles</span></div>
+          </article>
+
+          <article class="panel">
             <header class="project-header"><h3>北京华育兴业科技有限公司哈尔滨分公司</h3><p>2023.09–2024.01</p></header>
             <p class="muted">在校实习生 · 智慧停车系统</p>
             <p class="panel-copy">参与智慧停车系统开发，按 MVC 分离页面、业务逻辑和数据访问。涉及多步写入的业务使用 MySQL 事务维护一致性。</p>
             <div class="project-tags"><span>Spring Boot</span><span>MySQL</span><span>JSP</span><span>百度地图 SDK</span></div>
-          </article>
-          <article class="panel">
-            <header class="project-header"><h3>陕州区卫生院</h3></header>
-            <p class="muted">统计与档案管理实习</p>
-            <p class="panel-copy">协助日常收费、数据统计和居民健康档案维护。</p>
           </article>
         </div>
       </div>
@@ -218,7 +179,8 @@
       <div class="shell">
         <h2 id="contact-title" class="section-title">联系我</h2>
         <div class="panel contact-panel">
-          <p>欢迎交流 Agent 应用开发、医学影像研究和实习机会。</p>
+          <p>欢迎交流 Agent 开发、医学影像研究和实习机会。</p>
+          <a class="outline" href="mailto:zyh_20021010@163.com">邮件联系 <span aria-hidden="true">↗</span></a>
           <a class="outline" href="https://github.com/Mster111-zhang">GitHub · Mster111-zhang <span aria-hidden="true">↗</span></a>
         </div>
       </div>

@@ -244,3 +244,11 @@ main [id] { scroll-margin-top: 26px; }
   .type-caret { display: none; }
   .outline, .hero-preview { transition: none; }
 }
+
+.agent-preview { padding: clamp(22px, 3vw, 38px); background: linear-gradient(140deg, #132b30, #101822); }
+.agent-preview .preview-label { color: #7ed7cc; font-size: 13px; margin: 0 0 24px; }
+.agent-preview h2 { font-size: clamp(25px, 3vw, 38px); line-height: 1.35; margin: 0 0 24px; letter-spacing: -.03em; }
+.preview-evidence { display: flex; flex-direction: column; gap: 5px; border-top: 1px solid #ffffff18; padding: 12px 0; }
+.preview-evidence span { color: #a9bac6; font-size: 12px; }
+.preview-evidence strong { font-size: 15px; font-weight: 500; }
+.agent-preview .preview-conclusion { margin: 15px 0 0; color: #8de0d4; font-size: 14px; }
